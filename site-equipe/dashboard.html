@@ -3,60 +3,45 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Acrux Tasks</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="kanban.css">
+<title>Acrux Organizer</title>
+<link rel="stylesheet" href="kanbam.css">
 </head>
 
 <body>
 
-<header>
-<h2>Acrux Tasks</h2>
-<button onclick="logout()">Sair</button>
-</header>
-
 <div class="kanban">
 
 <div class="coluna" id="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
-<h3>A Fazer</h3>
+<h2>A Fazer</h2>
 
 <div class="tasks"></div>
 
-<input type="text" placeholder="Nova tarefa..." class="input-task">
+<input class="input-task" placeholder="Nova tarefa">
 <button onclick="addTask('todo')">Adicionar</button>
-
 </div>
 
 <div class="coluna" id="doing" ondrop="drop(event)" ondragover="allowDrop(event)">
-<h3>Fazendo</h3>
+<h2>Fazendo</h2>
 
 <div class="tasks"></div>
 
-<input type="text" placeholder="Nova tarefa..." class="input-task">
+<input class="input-task" placeholder="Nova tarefa">
 <button onclick="addTask('doing')">Adicionar</button>
-
 </div>
 
 <div class="coluna" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
-<h3>Concluído</h3>
+<h2>Concluído</h2>
 
 <div class="tasks"></div>
 
-<input type="text" placeholder="Nova tarefa..." class="input-task">
+<input class="input-task" placeholder="Nova tarefa">
 <button onclick="addTask('done')">Adicionar</button>
-
 </div>
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script src="kanban.js"></script>
-
-<script>
-function logout(){
-localStorage.clear()
-window.location.href="login.html"
-}
-</script>
 
 </body>
 </html>
