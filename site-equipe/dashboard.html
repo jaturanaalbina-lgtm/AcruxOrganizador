@@ -11,40 +11,51 @@
 <body>
 
 <header>
-
 <h2>Acrux Tasks</h2>
-
 <button onclick="logout()">Sair</button>
-
 </header>
 
 <div class="kanban">
 
-<div class="coluna">
+<div class="coluna" id="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
 <h3>A Fazer</h3>
-<div class="task">Montar chassi</div>
-<div class="task">Programar sensor</div>
+
+<div class="tasks"></div>
+
+<input type="text" placeholder="Nova tarefa..." class="input-task">
+<button onclick="addTask('todo')">Adicionar</button>
+
 </div>
 
-<div class="coluna">
+<div class="coluna" id="doing" ondrop="drop(event)" ondragover="allowDrop(event)">
 <h3>Fazendo</h3>
-<div class="task">Modelar peça no CAD</div>
+
+<div class="tasks"></div>
+
+<input type="text" placeholder="Nova tarefa..." class="input-task">
+<button onclick="addTask('doing')">Adicionar</button>
+
 </div>
 
-<div class="coluna">
+<div class="coluna" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
 <h3>Concluído</h3>
-<div class="task">Reunião semanal</div>
+
+<div class="tasks"></div>
+
+<input type="text" placeholder="Nova tarefa..." class="input-task">
+<button onclick="addTask('done')">Adicionar</button>
+
 </div>
 
 </div>
+
+<script src="kanban.js"></script>
 
 <script>
-
 function logout(){
 localStorage.clear()
 window.location.href="login.html"
 }
-
 </script>
 
 </body>
