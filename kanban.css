@@ -5,16 +5,10 @@ color:white;
 margin:0;
 }
 
-.titulo{
-text-align:center;
-margin:20px;
-}
-
 .kanban{
 display:flex;
 gap:20px;
 padding:20px;
-justify-content:center;
 }
 
 .coluna{
