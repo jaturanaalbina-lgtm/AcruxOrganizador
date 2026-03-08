@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<title>Acrux Tasks</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="kanban.css">
+</head>
+
+<body>
+
+<header>
+
+<h2>Acrux Tasks</h2>
+
+<button onclick="logout()">Sair</button>
+
+</header>
+
+<div class="kanban">
+
+<div class="coluna">
+<h3>A Fazer</h3>
+<div class="task">Montar chassi</div>
+<div class="task">Programar sensor</div>
+</div>
+
+<div class="coluna">
+<h3>Fazendo</h3>
+<div class="task">Modelar peça no CAD</div>
+</div>
+
+<div class="coluna">
+<h3>Concluído</h3>
+<div class="task">Reunião semanal</div>
+</div>
+
+</div>
+
+<script>
+
+function logout(){
+localStorage.clear()
+window.location.href="login.html"
+}
+
+</script>
+
+</body>
+</html>
