@@ -1,26 +1,25 @@
 const supabaseUrl = "https://povomrkytmlboxvntabb.supabase.com";
-const supabaseKey = "sb_publishable_3okKkRNzEi71TwBqKrZIxw_uI9ovYp4";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBvdm9tcmt5dG1sYm94dm50YWJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5ODQyODksImV4cCI6MjA4ODU2MDI4OX0.UDGgbDUHC-KL8Tbkleaeg-sX5zSk-PnES_1j2X5fnqQ";
 
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-let data = JSON.parse(localStorage.getItem("kanban")) || {
-todo: [],
-doing: [],
-done: []
-};
 
-function save(){
-localStorage.setItem("kanban", JSON.stringify(data));
+let usuario = localStorage.getItem("usuario");
+
+async function carregarTarefas(){
+
+let { data } = await supabase
+.from("tarefas")
+.select("*");
+
+render(data);
+
 }
 
-function render(){
+function render(lista){
 
-document.querySelectorAll(".tasks").forEach(e => e.innerHTML="");
+document.querySelectorAll(".tasks").forEach(e=>e.innerHTML="");
 
-for(let coluna in data){
-
-let container = document.querySelector("#"+coluna+" .tasks");
-
-data[coluna].forEach((task,i)=>{
+lista.forEach(task => {
 
 let div = document.createElement("div");
 
@@ -28,33 +27,43 @@ div.className="task";
 
 div.draggable=true;
 
-div.id=coluna+"-"+i;
+div.id=task.id;
 
-div.innerText=task;
+div.innerHTML = `
+${task.titulo}
+<br>
+<small>Criado por: ${task.criado_por}</small>
+`;
 
-div.ondragstart=drag;
+div.ondragstart = drag;
 
-container.appendChild(div);
+let coluna = document.querySelector(`#${task.coluna} .tasks`);
+
+if(coluna) coluna.appendChild(div);
 
 });
 
 }
 
+async function addTask(coluna){
+
+let input = document.querySelector(`#${coluna} .input-task`);
+
+let texto = input.value;
+
+if(texto === "") return;
+
+await supabase
+.from("tarefas")
+.insert([
+{
+titulo: texto,
+coluna: coluna,
+criado_por: usuario
 }
-
-function addTask(coluna){
-
-let input = document.querySelector("#"+coluna+" .input-task");
-
-if(input.value==="") return;
-
-data[coluna].push(input.value);
+]);
 
 input.value="";
-
-save();
-
-render();
 
 }
 
@@ -66,27 +75,30 @@ function drag(ev){
 ev.dataTransfer.setData("text", ev.target.id);
 }
 
-function drop(ev){
+async function drop(ev){
 
 ev.preventDefault();
 
 let id = ev.dataTransfer.getData("text");
 
-let origem = id.split("-")[0];
-let index = id.split("-")[1];
+let novaColuna = ev.currentTarget.id;
 
-let task = data[origem][index];
-
-data[origem].splice(index,1);
-
-let destino = ev.currentTarget.id;
-
-data[destino].push(task);
-
-save();
-
-render();
+await supabase
+.from("tarefas")
+.update({ coluna: novaColuna })
+.eq("id", id);
 
 }
 
-render();
+supabase
+.channel("tarefas")
+.on(
+"postgres_changes",
+{ event: "*", schema: "public", table: "tarefas" },
+payload => {
+carregarTarefas();
+}
+)
+.subscribe();
+
+carregarTarefas();
