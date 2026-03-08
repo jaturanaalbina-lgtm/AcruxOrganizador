@@ -1,3 +1,7 @@
+const supabaseUrl = "https://povomrkytmlboxvntabb.supabase.com";
+const supabaseKey = "sb_publishable_3okKkRNzEi71TwBqKrZIxw_uI9ovYp4";
+
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 let data = JSON.parse(localStorage.getItem("kanban")) || {
 todo: [],
 doing: [],
