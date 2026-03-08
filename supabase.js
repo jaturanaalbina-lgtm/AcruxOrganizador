@@ -1,4 +1,4 @@
-const supabase = window.supabase.createClient(
-"https://povomrkytmlboxvntabb.supabase.com",
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBvdm9tcmt5dG1sYm94dm50YWJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5ODQyODksImV4cCI6MjA4ODU2MDI4OX0.UDGgbDUHC-KL8Tbkleaeg-sX5zSk-PnES_1j2X5fnqQ"
-);
+const supabaseUrl = "https://povomrkytmlboxvntabb.supabase.com"
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBvdm9tcmt5dG1sYm94dm50YWJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5ODQyODksImV4cCI6MjA4ODU2MDI4OX0.UDGgbDUHC-KL8Tbkleaeg-sX5zSk-PnES_1j2X5fnqQ"
+
+const client = supabase.createClient(https://povomrkytmlboxvntabb.supabase.com, eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBvdm9tcmt5dG1sYm94dm50YWJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5ODQyODksImV4cCI6MjA4ODU2MDI4OX0.UDGgbDUHC-KL8Tbkleaeg-sX5zSk-PnES_1j2X5fnqQ)
