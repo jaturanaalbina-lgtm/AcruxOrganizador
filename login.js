@@ -1,10 +1,10 @@
 async function login(){
 
-let email = document.getElementById("usuario").value;
+let usuario = document.getElementById("usuario").value;
 let senha = document.getElementById("senha").value;
 
 const { data, error } = await supabase.auth.signInWithPassword({
-email: email,
+usuario: usuario,
 password: senha
 });
 
@@ -13,7 +13,7 @@ document.getElementById("erro").innerText = "Login inválido";
 return;
 }
 
-localStorage.setItem("usuario", email);
+localStorage.setItem("usuario", usuario);
 
 window.location.href = "dashboard.html";
 
