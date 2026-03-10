@@ -1,9 +1,7 @@
-<!DOCTYPE html>
+
 <html>
 
 <head>
-
-<meta charset="UTF-8">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
@@ -15,7 +13,6 @@
 
 <h1>Painel Admin</h1>
 
-<input id="titulo" placeholder="Título da tarefa">
 
 <select id="area">
 
