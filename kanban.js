@@ -1,7 +1,4 @@
-const supabaseUrl = "https://povomrkytmlboxvntabb.supabase.co";
-const supabaseKey = "const client = supabase.createClient(https://povomrkytmlboxvntabb.supabase.com, eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBvdm9tcmt5dG1sYm94dm50YWJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5ODQyODksImV4cCI6MjA4ODU2MDI4OX0.UDGgbDUHC-KL8Tbkleaeg-sX5zSk-PnES_1j2X5fnqQ)";
-
-const supabase = window.supabase.createClient(https://povomrkytmlboxvntabb.supabase.co, https://povomrkytmlboxvntabb.supabase.com, eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBvdm9tcmt5dG1sYm94dm50YWJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5ODQyODksImV4cCI6MjA4ODU2MDI4OX0.UDGgbDUHC-KL8Tbkleaeg-sX5zSk-PnES_1j2X5fnqQ);
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 let usuario = localStorage.getItem("usuario") || "anonimo";
 
@@ -120,7 +117,7 @@ carregarTarefas();
 }
 
 
-// ATUALIZAÇÃO EM TEMPO REAL
+
 supabase
 .channel("tarefas")
 .on(

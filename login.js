@@ -1,24 +1,20 @@
 async function login(){
 
-let email=document.getElementById("email").value;
-let senha=document.getElementById("senha").value;
+let email = document.getElementById("usuario").value;
+let senha = document.getElementById("senha").value;
 
-const {data,error}=await supabase.auth.signInWithPassword({
-
-email:email,
-password:senha
-
+const { data, error } = await supabase.auth.signInWithPassword({
+email: email,
+password: senha
 });
 
 if(error){
-
-document.getElementById("erro").innerText="Login inválido";
+document.getElementById("erro").innerText = "Login inválido";
 return;
-
 }
 
-localStorage.setItem("usuario_id",data.user.id);
+localStorage.setItem("usuario", email);
 
-window.location.href="dashboard.html";
+window.location.href = "dashboard.html";
 
 }
